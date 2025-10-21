@@ -8,6 +8,8 @@ on:
     - cron: 49 3 13 * *
   workflow_dispatch: null
 
+permissions: write-all
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
