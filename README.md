@@ -1,2 +1,2 @@
 # MirrorApps
-Mirror Links for Apps & Censored Softwares
+Mirror Links for Apps & Censored Software
