@@ -6,5 +6,13 @@
   {
     "link":"https://psiphon.ca/psiphon3.exe",
     "filename":"psiphon3.exe"
+  },
+  {
+    "link":"https://www.downloadnth.com/nthlink-android-current.apk",
+    "filename":"nthlink-android-current.apk"
+  },
+  {
+    "link":"https://www.downloadnth.com/nthlink-win64-current.exe",
+    "filename":"nthlink-win64-current.exe"
   }
 ]
