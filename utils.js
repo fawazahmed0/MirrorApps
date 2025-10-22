@@ -15,8 +15,6 @@ async function getJSON(pathToJSON) {
 async function extractWith7zip(pathToZip, pathToSave) {
     await fs.mkdir(pathToSave, { recursive: true })
     await exec(`7z x -y "${pathToZip}" -o"${pathToSave}"`).catch(console.error)
-    let pathArr = await listDirRecursive(pathToSave, true);
-    return pathArr
 }
 
-module.exports = {downloadFileWithCurl, getJSON, extractWith7zip}
+module.exports = { downloadFileWithCurl, getJSON, extractWith7zip }

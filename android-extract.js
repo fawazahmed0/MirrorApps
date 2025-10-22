@@ -43,7 +43,6 @@ async function recursiveExtract(filePath) {
             await fs.rename(fileFullPath, path.join(releaseDir, file));
         } else {
             const extractFolder = path.join(filePath, crypto.randomUUID());
-            await fs.mkdir(extractFolder, { recursive: true });
             await extractWith7zip(fileFullPath, extractFolder).catch(console.error);
             await fs.rm(fileFullPath, { recursive: true, force: true }); // Remove the original archive after extraction
             files.push(path.basename(extractFolder)); // Add the new folder to the list for further processing
