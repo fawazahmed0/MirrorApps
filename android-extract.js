@@ -10,7 +10,7 @@ async function main() {
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto('https://developers.google.com/android/images', { waitUntil: 'networkidle' });
+    await page.goto('https://developers.google.com/android/images');
     await page.getByText('Acknowledge').click()
     // get first zip link in page
     const zipLink = await page.locator('a[href$=".zip"]').first().getAttribute('href');
