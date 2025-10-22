@@ -19,22 +19,36 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: fawazahmed0/maximize-build-space@master
+        with:
+          root-reserve-mb: 10240
+          swap-size-mb: 4096
+          remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-codeql: "true"
+          remove-docker-images: "true"
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v6
         with:
-          node-version: 'latest'
+          node-version: "latest"
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Install dependencies
+        shell: bash
+        run: |
+          npm i
+          npx playwright install --with-deps
+      # Runs a set of commands using the runners shell
+      - name: Get Android Apks
+        run: |
+          node android-extract.js
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Fetch links.json
         run: |
-          mkdir release
-          echo "some file content" > ./release/jojo
-          echo "some other content" > ./release/momo
+          node downloader.js
 
       - name: Release
         shell: bash
