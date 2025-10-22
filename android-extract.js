@@ -33,9 +33,9 @@ async function recursiveExtract(filePath) {
 
     for (const file of files) {
         const fileFullPath = path.join(filePath, file);
-        const stats = await fs.stat(fileFullPath);
+        const stats = await fs.stat(fileFullPath).catch(console.error);
 
-        if (stats.isDirectory()) {
+        if (stats && stats.isDirectory()) {
             await recursiveExtract(fileFullPath);
         } else if (path.extname(fileFullPath) == ".apk") {
             const releaseDir = path.join(__dirname, 'release');
