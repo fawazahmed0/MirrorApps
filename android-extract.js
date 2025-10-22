@@ -2,12 +2,12 @@ const util = require('node:util');
 const exec = util.promisify(require('node:child_process').exec);
 const fs = require('fs/promises')
 const path = require('path')
-const { chromium } = require('playwright');
+const { firefox } = require('playwright');
 const { downloadFileWithCurl, extractWith7zip } = require('./utils')
 
 
 async function main() {
-    const browser = await chromium.launch({ headless: true });
+    const browser = await firefox.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('https://developers.google.com/android/images');
